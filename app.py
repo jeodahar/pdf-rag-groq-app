@@ -92,9 +92,9 @@ if uploaded_file:
             with st.chat_message("assistant"):
                 with st.spinner("Searching document & generating answer..."):
                     try:
-                        # RAG Step 1: Retrieve top-3 relevant context chunks
+                        # RAG Step 1: Retrieve top-3 relevant context chunks using modern invoke()
                         retriever = vector_db.as_retriever(search_kwargs={"k": 3})
-                        retrieved_docs = retriever.get_relevant_documents(user_prompt)
+                        retrieved_docs = retriever.invoke(user_prompt)
                         context = "\n\n".join([doc.page_content for doc in retrieved_docs])
 
                         # RAG Step 2: Query Groq LLM with context-augmented prompt

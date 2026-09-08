@@ -22,12 +22,14 @@ with st.sidebar:
     if not groq_api_key:
         groq_api_key = st.text_input("Enter Groq API Key:", type="password")
     
-    # Model Selection from open-source models supported by Groq
+    # Model Selection featuring openai/gpt-oss-120b
     model_option = st.selectbox(
         "Select LLM Model:",
         options=[
-            openai/gpt-oss-120b""
-           
+            "openai/gpt-oss-120b",
+            "llama-3.3-70b-versatile",
+            "llama-3.1-8b-instant",
+            "mixtral-8x7b-32768"
         ],
         index=0
     )
